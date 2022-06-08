@@ -22,3 +22,22 @@ class RouterDisplay(BaseModel):
     class Config():
         orm_mode= True
 
+
+##Services schemas
+
+class ServiceBase(BaseModel):
+    name : str
+    price : int
+    rate : str
+
+    class Config():
+        orm_mode= True
+
+class ServiceDisplay(BaseModel):
+    id: int
+    name : str
+    price : int
+    rate : str
+
+    class Config():
+        orm_mode= True

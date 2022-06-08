@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from db import models
 from db.database import engine
-from routers import router_routes
+from routers import router_routes, service_routes
 #from auth import authentication
 #from fastapi.middleware.cors import CORSMiddleware
 
@@ -14,6 +14,7 @@ def root():
     return "Hello world!"
 
 app.include_router(router_routes.router)
+app.include_router(service_routes.service)
 
 
 """ origins = [

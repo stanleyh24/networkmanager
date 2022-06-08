@@ -4,15 +4,8 @@ from sqlalchemy.sql.schema import ForeignKey
 from sqlalchemy.orm import relationship
 
 
-class Router(Base):
-    __tablename__ = 'router'
-    id = Column(Integer, primary_key=True, index=True)
-    ip = Column(String)
-    name = Column(String)
-    username = Column(String)
-    password = Column(String)
 
-""" class User(Base):
+class User(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String)
@@ -34,7 +27,7 @@ class Service(Base):
     name = Column(String)
     price = Column(Integer)
     rate= Column(String)
-    clients = relationship('DbClient', back_populates='service')
+    clients = relationship('Client', back_populates='service')
 
 
 class Client(Base):
@@ -48,7 +41,7 @@ class Client(Base):
     admission_date = Column(DateTime)
     payment_date= Column(DateTime)
     service_id = Column(Integer, ForeignKey("service.id"))
-    service = relationship("DbService", back_populates='clients')
+    service = relationship("Service", back_populates='clients')
 
 class InvoicesClient(Base):
     __tablename__ = 'invoice'
@@ -61,4 +54,4 @@ class InvoicesClient(Base):
     amount = Column(Integer)
     creation_date = Column(DateTime)
     expiration_date = Column(DateTime)
-    paid = Column(Boolean, default=False) """
+    paid = Column(Boolean, default=False)

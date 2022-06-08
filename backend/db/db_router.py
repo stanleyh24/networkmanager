@@ -1,4 +1,3 @@
-from unicodedata import name
 from routers.schemas import RouterBase
 from sqlalchemy.orm.session import Session
 from db.models import Router
