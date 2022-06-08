@@ -13,7 +13,7 @@ service = APIRouter(
     tags=['service']
 )
 
-@service.get('/')
+@service.get('/', response_model= List[ServiceDisplay])
 def get_all_services(db: Session= Depends(get_db)):
     return db_service.get_all(db)
 

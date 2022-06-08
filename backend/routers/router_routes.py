@@ -1,3 +1,4 @@
+from urllib import response
 from fastapi.exceptions import HTTPException
 from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
@@ -14,7 +15,7 @@ router = APIRouter(
 )
 
 
-@router.get('')
+@router.get('', response_model=List[RouterDisplay])
 def get_all_routers(db:Session= Depends(get_db)):
     return db_router.get_all(db)
 
