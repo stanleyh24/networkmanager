@@ -13,7 +13,25 @@ def get_resource(ip:str,command:str,username:str,password:str):
     except Timeout:
         print('Timeout has been raised.')
     
-    
+def create_resource(ip:str,command:str,_data:str,username:str,password:str):
+    try:
+        r = requests.put(f'https://{ip}/rest/{command}',data=_data, auth=(f'{username}', f'{password}'), verify=False, timeout=2)
+        return r.json()
+    except Timeout:
+        print('Timeout has been raised.')    
 
-response=get_resource('190.160.1.10','ip/address','admin','Asd24690@')
+def update_resource(ip:str,command:str,_data:str,username:str,password:str):
+    try:
+        r = requests.put(f'https://{ip}/rest/{command}',data=_data, auth=(f'{username}', f'{password}'), verify=False, timeout=2)
+        return r.json()
+    except Timeout:
+        print('Timeout has been raised.') 
+
+def delete_resource(ip:str,command:str,username:str,password:str):
+    try:
+        r = requests.delete(f'https://{ip}/rest/{command}', auth=(f'{username}', f'{password}'), verify=False, timeout=2)
+    except Timeout:
+        print('Timeout has been raised.')
+
+response=delete_resource('190.160.1.1','ppp/secret/*2','admin','Asd24690@')
 print(response)
