@@ -11,7 +11,7 @@ def create(db:Session, request: ClientBase):
         address = request.address,
         phone = request.phone,
         code = request.code,
-        admission_date = request.admission_date,
+        admission_date = datetime.datetime.now(),
         payment_date= request.payment_date,
         service_id = request.service_id
     )

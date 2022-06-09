@@ -1,3 +1,4 @@
+from ast import In
 from .database import Base
 from sqlalchemy import Column, Integer, String, DateTime, Boolean
 from sqlalchemy.sql.schema import ForeignKey
@@ -19,6 +20,7 @@ class Router(Base):
     name = Column(String)
     username = Column(String)
     password = Column(String)
+    clients = relationship('Client', back_populates='router')
 
 
 class Service(Base):
@@ -39,8 +41,10 @@ class Client(Base):
     phone = Column(String)
     code = Column(String)
     admission_date = Column(DateTime)
-    payment_date= Column(DateTime)
+    payment_date= Column(Integer)
     service_id = Column(Integer, ForeignKey("service.id"))
+    router_id = Column(Integer, ForeignKey("router.id"))
+    router = relationship('Router', back_populates='clients')
     service = relationship("Service", back_populates='clients')
 
 class InvoicesClient(Base):

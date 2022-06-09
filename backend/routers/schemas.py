@@ -1,6 +1,6 @@
 from typing import List, Optional
 from pydantic import BaseModel
-from datetime import date, datetime
+from datetime import datetime
 from typing import List
 
 class RouterBase(BaseModel):
@@ -49,10 +49,9 @@ class ClientBase(BaseModel):
     lastname : str
     address : str
     phone : str
-    code : str
-    admission_date: date
     payment_date: int
     service_id : int
+    router_id : int
 
     class Config():
         orm_mode= True
@@ -63,11 +62,10 @@ class ClientDisplay(BaseModel):
     lastname : str
     address : str
     phone : str
-    code : str
-    admission_date: date
+    admission_date: datetime
     payment_date: int
     service_id : int
-
+    router_id : int
     class Config():
         orm_mode= True
 
